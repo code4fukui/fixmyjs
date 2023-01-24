@@ -1,7 +1,7 @@
 var fixmyjs = require('../')
 var jshint = require('jshint').JSHINT
 
-module.exports = {
+export default {
   f: fixmyjs.fix,
   l: function (code, options) {
     jshint(code, options)

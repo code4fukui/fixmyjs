@@ -11,23 +11,17 @@
 [![devDependency Status](https://david-dm.org/jshint/fixmyjs/dev-status.svg)](https://david-dm.org/jshint/fixmyjs#info=devDependencies)
 [![Download Count](https://img.shields.io/npm/dm/fixmyjs.svg?style=flat)](https://www.npmjs.com/package/fixmyjs)
 
-## Installing
-
-```
-npm install fixmyjs -g
-```
-
-## Usage
-
-```
-fixmyjs your_file.js
-```
 
 ### Programatically
 
 ```js
-var fixmyjs = require('fixmyjs')
-var stringFixedCode = fixmyjs.fix(stringOfCode, objectOfOptions)
+import fixmyjs from "https://code4fukui.github.io/fixmyjs/lib/index.js";
+const src = `
+const s ="abc"
+`;
+const opt = {};
+const fixed = fixmyjs.fix(src, opt);
+console.log(fixed);
 ```
 
 
@@ -88,10 +82,17 @@ fixmyjs --legacy your_file.js
 ### Programatically
 
 ```js
-var jshint = require('jshint').JSHINT
-var fixmyjs = require('fixmyjs')
-jshint(stringOfCode, objectOfOptions)
-var stringFixedCode = fixmyjs(jshint.data(), stringOfCode, objectOfOptions).run()
+import fixmyjs from "https://code4fukui.github.io/fixmyjs/lib/index.js";
+import jshint from "https://code4fukui.github.io/jshint/jshint.js";
+
+const src = `
+const s ="abc"
+`;
+
+const options = {};
+jshint(src, options)
+const fixed = fixmyjs(jshint.data(), src, options).run();
+console.log(fixed);
 ```
 
 Legacy uses [JSHINT](https://github.com/jshint/jshint) to determine what needs to be fixed and then uses a combination of regular expressions and string replacements to non-destructively fix any errors. While non-legacy supports more options, it is more prone to being destructive since the JavaScript is rewritten by the program.
