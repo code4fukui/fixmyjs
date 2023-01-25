@@ -1,11 +1,12 @@
 import fixmyjs from './lib/index.js';
 
 const src = `
+import { CSV } from "https://js.sabae.cc/CSV.js";
 var s="abc"
 while (s == NaN) alert()
 const s2 = { abc: "abc" };
 delete s2.abc;
-delete s;
+//delete s;
 console.log(parseInt(s2));
 `;
 const opt = {
